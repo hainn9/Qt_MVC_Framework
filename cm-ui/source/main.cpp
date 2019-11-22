@@ -2,6 +2,14 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <controllers/mastercontroller.h>
+#include <data/stringdecorator.h>
+#include <data/intdecorator.h>
+#include <data/enumdecorator.h>
+#include <data/datetimedecorator.h>
+#include <model/client.h>
+#include <model/address.h>
+#include <model/appointment.h>
+#include <model/contact.h>
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +21,14 @@ int main(int argc, char *argv[])
     qmlRegisterType<cm::controllers::NavigationController>("CM", 1, 0, "NavigationController");
     qmlRegisterType<cm::controllers::CommandController>("CM", 1, 0, "CommandController");
     qmlRegisterType<cm::framework::Command>("CM", 1, 0, "Command");
+    qmlRegisterType<cm::data::StringDecorator>("CM", 1, 0, "StringDecorator");
+    qmlRegisterType<cm::data::IntDecorator>("CM", 1, 0, "IntDecorator");
+    qmlRegisterType<cm::data::EnumDecorator>("CM", 1, 0, "EnumDecorator");
+    qmlRegisterType<cm::data::DateTimeDecorator>("CM", 1, 0, "DateTimeDecorator");
+    qmlRegisterType<cm::models::Address>("CM", 1, 0, "Address");
+    qmlRegisterType<cm::models::Appointment>("CM", 1, 0, "Appointment");
+    qmlRegisterType<cm::models::Client>("CM", 1, 0, "Client");
+    qmlRegisterType<cm::models::Contact>("CM", 1, 0, "Contact");
     cm::controllers::MasterController masterController;
 
     QQmlApplicationEngine engine;

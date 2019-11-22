@@ -27,14 +27,20 @@ UI_DIR = $$PWD/build/$$DESTINATION_PATH/.ui
 
 INCLUDEPATH += source
 
-SOURCES += source/model/client.cpp \
+SOURCES += \
     source/controllers/commandcontroller.cpp \
     source/controllers/mastercontroller.cpp \
     source/data/datadecorator.cpp \
     source/data/datetimedecorator.cpp \
+    source/data/entity.cpp \
+    source/data/enumdecorator.cpp \
     source/data/intdecorator.cpp \
     source/data/stringdecorator.cpp \
-    source/framework/command.cpp
+    source/framework/command.cpp \
+    source/model/address.cpp \
+    source/model/appointment.cpp \
+    source/model/client.cpp \
+    source/model/contact.cpp
 
 HEADERS += \
     source/cm-lib_global.h \
@@ -43,10 +49,16 @@ HEADERS += \
     source/controllers/navigationcontroller.h \
     source/data/datadecorator.h \
     source/data/datetimedecorator.h \
+    source/data/entity.h \
+    source/data/entitycollection.h \
+    source/data/enumdecorator.h \
     source/data/intdecorator.h \
     source/data/stringdecorator.h \
     source/framework/command.h \
-    source/model/client.h
+    source/model/address.h \
+    source/model/appointment.h \
+    source/model/client.h \
+    source/model/contact.h
 
 # Default rules for deployment.
 unix {

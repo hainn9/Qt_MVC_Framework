@@ -93,11 +93,11 @@ void DateTimeDecorator::update(const QJsonObject &jsonObj)
 {
     if (jsonObj.contains(key()))
     {
-        setValue(QDateTime(jsonObj.value(key().)));
+        setValue(QDateTime::fromString(jsonObj.value(key()).toString()));
     }
     else
     {
-        setValue("");
+        setValue(QDateTime::currentDateTime());
     }
 }
 
