@@ -2,6 +2,9 @@ import QtQuick 2.9
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.2
 
+import assets 1.0
+import components 1.0
+
 Window {
     visible: true
     width: 640
@@ -20,33 +23,8 @@ Window {
             contentFrame.replace("qrc:/view/EditClientView.qml", {selectedClient : client})
     }
 
-    Rectangle {
-        id: navigationBar
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            left: parent.left
-        }
-        width: 100
-        color: "#000000"
-
-        Column {
-            Button {
-                text: "Dashboard"
-                onClicked:
-                    masterController.ui_navigationController.goDashboardView()
-            }
-            Button {
-                text: "New Client"
-                onClicked:
-                    masterController.ui_navigationController.goCreateClientView()
-            }
-            Button {
-                text: "Find Client"
-                onClicked:
-                    masterController.ui_navigationController.goFindClientView()
-            }
-        }
+    NavigationBar {
+        id: navigationBar        
     }
 
     StackView {

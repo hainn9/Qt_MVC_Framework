@@ -2,9 +2,9 @@
     <qresource prefix="/view">
         <file alias="MasterView.qml">view/MasterView.qml</file>
         <file alias="SplashView.qml">view/SplashView.qml</file>
-        <file alias="DashboardView.qml">DashboardView.qml</file>
-        <file alias="CreateClientView.qml">CreateClientView.qml</file>
-        <file alias="FindClientView.qml">FindClientView.qml</file>
-        <file alias="EditClientView.qml">EditClientView.qml</file>
+        <file alias="DashboardView.qml">view/DashboardView.qml</file>
+        <file alias="CreateClientView.qml">view/CreateClientView.qml</file>
+        <file alias="FindClientView.qml">view/FindClientView.qml</file>
+        <file alias="EditClientView.qml">view/EditClientView.qml</file>
     </qresource>
 </RCC>

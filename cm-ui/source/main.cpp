@@ -11,9 +11,12 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<cm::controllers::MasterController>("CM", 1, 0, "MasterController");
     qmlRegisterType<cm::controllers::NavigationController>("CM", 1, 0, "NavigationController");
+    qmlRegisterType<cm::controllers::CommandController>("CM", 1, 0, "CommandController");
+    qmlRegisterType<cm::framework::Command>("CM", 1, 0, "Command");
     cm::controllers::MasterController masterController;
 
     QQmlApplicationEngine engine;
+    engine.addImportPath("qrc:/");
     engine.rootContext()->setContextProperty("masterController", &masterController);
 
     const QUrl url(QStringLiteral("qrc:/view/MasterView.qml"));

@@ -28,12 +28,16 @@ UI_DIR = $$PWD/build/$$DESTINATION_PATH/.ui
 INCLUDEPATH += source
 
 SOURCES += source/model/client.cpp \
-    source/controllers/mastercontroller.cpp
+    source/controllers/commandcontroller.cpp \
+    source/controllers/mastercontroller.cpp \
+    source/framework/command.cpp
 
 HEADERS += \
     source/cm-lib_global.h \
+    source/controllers/commandcontroller.h \
     source/controllers/mastercontroller.h \
     source/controllers/navigationcontroller.h \
+    source/framework/command.h \
     source/model/client.h
 
 # Default rules for deployment.

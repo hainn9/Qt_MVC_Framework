@@ -27,7 +27,9 @@ INCLUDEPATH += source \
 SOURCES += \
         source/main.cpp
 
-RESOURCES += view.qrc
+RESOURCES += view.qrc \
+    assets.qrc \
+    components.qrc
 
 LIBS += -L$$PWD/../binaries/$$DESTINATION_PATH -lcm-lib
 
