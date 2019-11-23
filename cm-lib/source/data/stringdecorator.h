@@ -9,7 +9,7 @@ namespace data {
 class CMLIB_EXPORT StringDecorator : public DataDecorator
 {
     Q_OBJECT
-    Q_PROPERTY(QString value READ value WRITE setValue NOTIFY valueChanged)
+    Q_PROPERTY(QString ui_value READ value WRITE setValue NOTIFY valueChanged)
 public:
     explicit StringDecorator(Entity *parent = nullptr, const QString& key = "ItemKey", const QString& label = "", const QString& value = "");
     ~StringDecorator();

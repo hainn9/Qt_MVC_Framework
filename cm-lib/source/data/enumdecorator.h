@@ -10,7 +10,7 @@ namespace data {
 class CMLIB_EXPORT EnumDecorator : public DataDecorator
 {
     Q_OBJECT
-    Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
+    Q_PROPERTY(int ui_value READ value WRITE setValue NOTIFY valueChanged)
     Q_PROPERTY(QString ui_valueDescription READ valueDescription NOTIFY valueChanged)
 public:
     explicit EnumDecorator(Entity *parent = nullptr, const QString& key = "ItemKey", const QString& label = "",

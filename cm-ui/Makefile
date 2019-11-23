@@ -723,6 +723,7 @@ build/linux/gcc/x64/debug/.qrc/qrc_components.cpp: components.qrc \
 		../../../Qt5.13.1/5.13.1/gcc_64/bin/rcc \
 		components/NavigationButton.qml \
 		components/NavigationBar.qml \
+		components/StringEditorSingleLine.qml \
 		components/CommandButton.qml \
 		components/CommandBar.qml \
 		components/qmldir

@@ -16,7 +16,7 @@ class Entity;
 class CMLIB_EXPORT DataDecorator : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString label READ label CONSTANT)
+    Q_PROPERTY(QString ui_label READ label CONSTANT)
 public:
     explicit DataDecorator(Entity *parent = nullptr, const QString& key = "ItemKey", const QString& label = "");
     virtual ~DataDecorator();

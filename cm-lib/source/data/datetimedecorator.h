@@ -11,7 +11,7 @@ namespace data {
 class CMLIB_EXPORT DateTimeDecorator : public DataDecorator
 {
     Q_OBJECT
-    Q_PROPERTY(QDateTime value READ value WRITE setValue NOTIFY valueChanged)
+    Q_PROPERTY(QDateTime ui_value READ value WRITE setValue NOTIFY valueChanged)
     Q_PROPERTY(QString ui_isoString READ toIsoString NOTIFY valueChanged)
     Q_PROPERTY(QString ui_prettyDateString READ toPrettyDateString NOTIFY valueChanged)
     Q_PROPERTY(QString ui_prettyTimeString READ toPrettyTimeString NOTIFY valueChanged)
