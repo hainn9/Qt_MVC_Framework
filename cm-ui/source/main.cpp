@@ -10,6 +10,7 @@
 #include <model/address.h>
 #include <model/appointment.h>
 #include <model/contact.h>
+#include <model/clientsearch.h>
 
 int main(int argc, char *argv[])
 {
@@ -28,6 +29,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<cm::models::Address>("CM", 1, 0, "Address");
     qmlRegisterType<cm::models::Appointment>("CM", 1, 0, "Appointment");
     qmlRegisterType<cm::models::Client>("CM", 1, 0, "Client");
+    qmlRegisterType<cm::models::ClientSearch>("CM", 1, 0, "ClientSearch");
     qmlRegisterType<cm::models::Contact>("CM", 1, 0, "Contact");
     cm::controllers::MasterController masterController;
 

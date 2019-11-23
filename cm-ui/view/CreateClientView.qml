@@ -24,12 +24,34 @@ Item {
         Column {
             spacing: Style.sizeScreenMargin
             width: scrollView.width
-            StringEditorSingleLine {
-                stringDecor: newClient.ui_name
-                anchors {
-                    left: parent.left
-                    right: parent.right
+            Panel {
+                headerText: "Client Details"
+                contentComponent:
+                    Column {
+                    spacing: Style.sizeControlSpacing
+                    StringEditorSingleLine {
+                        stringDecor: newClient.ui_referrence
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+                    }
+                    StringEditorSingleLine {
+                        stringDecor: newClient.ui_name
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+                    }
                 }
+            }
+            AddressEditor {
+                address: newClient.ui_supplyAddress
+                headerText: "Supply Address"
+            }
+            AddressEditor {
+                address: newClient.ui_billingAddress
+                headerText: "Billing Address"
             }
         }
     }

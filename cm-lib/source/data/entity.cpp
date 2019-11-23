@@ -1,5 +1,6 @@
 #include "entity.h"
 #include <QJsonArray>
+#include <QUuid>
 
 namespace cm {
 namespace data {
@@ -9,7 +10,8 @@ class Entity::EntityPrivate
 public:
     EntityPrivate(Entity* pEntity, const QString& pKey)
         :entity(pEntity),
-          key(pKey)
+          key(pKey),
+          id(QUuid::createUuid().toString())
     {}
 
     Entity* entity{nullptr};
@@ -17,6 +19,8 @@ public:
     std::map<QString, Entity*> entityMap;
     std::map<QString, DataDecorator*> dataDecoratorMap;
     std::map<QString, EntityCollectionBase*> collectionMap;
+    QString id;
+    StringDecorator* primaryKey{nullptr};
 };
 
 Entity::Entity(QObject* parent, const QString& key)
@@ -41,8 +45,24 @@ const QString& Entity::key() const
     return entity_priv->key;
 }
 
+const QString &Entity::id() const
+{
+    if(entity_priv->primaryKey != nullptr && !entity_priv->primaryKey->value().isEmpty()) {
+        return entity_priv->primaryKey->value();
+    }
+    return entity_priv->id;
+}
+
+void Entity::setPrimaryKey(StringDecorator *_primaryKey)
+{
+    entity_priv->primaryKey = _primaryKey;
+}
+
 void Entity::update(const QJsonObject &jsonObj)
 {
+    if(jsonObj.contains("id")) {
+        entity_priv->id = jsonObj.value("id").toString();
+    }
     // Update datadecorator
     for(std::pair<QString, DataDecorator*> d : entity_priv->dataDecoratorMap) {
         d.second->update(jsonObj);
@@ -62,6 +82,7 @@ void Entity::update(const QJsonObject &jsonObj)
 QJsonObject Entity::toJson() const
 {
     QJsonObject retObj;
+    retObj.insert("id", entity_priv->id);
     for(std::pair<QString, DataDecorator*> d : entity_priv->dataDecoratorMap) {
         retObj.insert(d.first, d.second->jsonValue());
     }

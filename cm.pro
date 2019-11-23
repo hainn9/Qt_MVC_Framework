@@ -2,5 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     cm-lib \
-    cm-test \
-    cm-ui
+    cm-ui \
+    cm-test

@@ -4,6 +4,7 @@ import assets 1.0
 
 Item {
     property StringDecorator stringDecor
+    property string tmpString
 
     height: width > textLabel.width + textValue.width ? Style.heightDataControls : Style.heightDataControls * 2
 
@@ -12,8 +13,7 @@ Item {
         Rectangle {
             width: Style.widthDataControls
             height: Style.heightDataControls
-            color: Style.colorBackground
-
+            color: Style.colourPanelBackground
             Text {
                 id: textLabel
                 anchors {
@@ -22,7 +22,7 @@ Item {
                 }
                 font.pixelSize: Style.pixelSizeDataControls
                 color: Style.colourDataControlsFont
-                text: stringDecor.ui_label
+                text: stringDecor ? stringDecor.ui_label : tmpString
                 verticalAlignment: Qt.AlignVCenter
             }
         }
@@ -44,7 +44,7 @@ Item {
                 }
                 font.pixelSize: Style.pixelSizeDataControls
                 color: Style.colourDataControlsFont
-                text: stringDecor.ui_value
+                text: stringDecor ? stringDecor.ui_value : tmpString
                 verticalAlignment: Qt.AlignVCenter
             }
         }

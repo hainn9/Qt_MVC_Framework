@@ -4,6 +4,7 @@
 #include <QObject>
 #include <data/datadecorator.h>
 #include <data/entitycollection.h>
+#include <data/stringdecorator.h>
 
 namespace cm {
 namespace data {
@@ -16,6 +17,8 @@ public:
     virtual ~Entity();
 
     const QString& key() const;
+    const QString& id() const;
+    void setPrimaryKey(StringDecorator* _primaryKey);
     void update(const QJsonObject& jsonObj);
     QJsonObject toJson() const;
 

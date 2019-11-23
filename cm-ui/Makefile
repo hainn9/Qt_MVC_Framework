@@ -724,9 +724,12 @@ build/linux/gcc/x64/debug/.qrc/qrc_components.cpp: components.qrc \
 		components/NavigationButton.qml \
 		components/NavigationBar.qml \
 		components/StringEditorSingleLine.qml \
+		components/SearchResultDelegate.qml \
 		components/CommandButton.qml \
 		components/CommandBar.qml \
-		components/qmldir
+		components/qmldir \
+		components/AddressEditor.qml \
+		components/Panel.qml
 	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/rcc -name components components.qrc -o build/linux/gcc/x64/debug/.qrc/qrc_components.cpp
 
 compiler_moc_predefs_make_all: build/linux/gcc/x64/debug/.moc/moc_predefs.h
@@ -883,6 +886,9 @@ build/linux/gcc/x64/debug/.obj/main.o: source/main.cpp ../../../Qt5.13.1/5.13.1/
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/QQmlListProperty \
 		../cm-lib/source/controllers/commandcontroller.h \
 		../cm-lib/source/framework/command.h \
+		../cm-lib/source/controllers/idatabasecontroller.h \
+		../cm-lib/source/model/clientsearch.h \
+		../cm-lib/source/controllers/databasecontroller.h \
 		../cm-lib/source/data/intdecorator.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/main.o source/main.cpp
 

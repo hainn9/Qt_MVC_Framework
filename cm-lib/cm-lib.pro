@@ -1,4 +1,5 @@
 QT -= gui
+QT += sql
 
 TEMPLATE = lib
 DEFINES += CMLIB_LIBRARY
@@ -29,6 +30,7 @@ INCLUDEPATH += source
 
 SOURCES += \
     source/controllers/commandcontroller.cpp \
+    source/controllers/databasecontroller.cpp \
     source/controllers/mastercontroller.cpp \
     source/data/datadecorator.cpp \
     source/data/datetimedecorator.cpp \
@@ -40,11 +42,14 @@ SOURCES += \
     source/model/address.cpp \
     source/model/appointment.cpp \
     source/model/client.cpp \
+    source/model/clientsearch.cpp \
     source/model/contact.cpp
 
 HEADERS += \
     source/cm-lib_global.h \
     source/controllers/commandcontroller.h \
+    source/controllers/databasecontroller.h \
+    source/controllers/idatabasecontroller.h \
     source/controllers/mastercontroller.h \
     source/controllers/navigationcontroller.h \
     source/data/datadecorator.h \
@@ -58,6 +63,7 @@ HEADERS += \
     source/model/address.h \
     source/model/appointment.h \
     source/model/client.h \
+    source/model/clientsearch.h \
     source/model/contact.h
 
 # Default rules for deployment.
