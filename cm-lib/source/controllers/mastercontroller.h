@@ -6,11 +6,12 @@
 #include <QScopedPointer>
 
 #include <cm-lib_global.h>
-#include <controllers/navigationcontroller.h>
-#include <controllers/commandcontroller.h>
-#include <controllers/databasecontroller.h>
+#include <controllers/inavigationcontroller.h>
+#include <controllers/icommandcontroller.h>
+#include <controllers/idatabasecontroller.h>
 #include <model/client.h>
 #include <model/clientsearch.h>
+#include <framework/iobjectfactory.h>
 
 namespace cm {
 namespace controllers {
@@ -19,18 +20,18 @@ class CMLIB_EXPORT MasterController : public QObject
 {
     Q_OBJECT
     Q_PROPERTY( QString ui_welcomeMessage READ welcomeMessage CONSTANT )
-    Q_PROPERTY( cm::controllers::NavigationController* ui_navigationController READ navigationController CONSTANT )
-    Q_PROPERTY( cm::controllers::CommandController* ui_commandController READ commandController CONSTANT )
-    Q_PROPERTY( cm::controllers::DatabaseController* ui_databaseController READ databaseController CONSTANT )
+    Q_PROPERTY( cm::controllers::INavigationController* ui_navigationController READ navigationController CONSTANT )
+    Q_PROPERTY( cm::controllers::ICommandController* ui_commandController READ commandController CONSTANT )
+    Q_PROPERTY( cm::controllers::IDatabaseController* ui_databaseController READ databaseController CONSTANT )
     Q_PROPERTY( cm::models::Client* ui_client READ client CONSTANT )
     Q_PROPERTY( cm::models::ClientSearch* ui_clientSearch READ clientSearch CONSTANT )
 public:
-    explicit MasterController(QObject *parent = nullptr);
+    explicit MasterController(QObject *parent = nullptr, framework::IObjectFactory* objectFactory = nullptr);
     ~MasterController();
 
-    NavigationController* navigationController();
-    CommandController* commandController();
-    DatabaseController* databaseController();
+    INavigationController* navigationController();
+    ICommandController* commandController();
+    IDatabaseController* databaseController();
     models::Client* client();
     models::ClientSearch* clientSearch();
     const QString& welcomeMessage() const;

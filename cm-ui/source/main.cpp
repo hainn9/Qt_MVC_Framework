@@ -11,6 +11,7 @@
 #include <model/appointment.h>
 #include <model/contact.h>
 #include <model/clientsearch.h>
+#include <framework/objectfactory.h>
 
 int main(int argc, char *argv[])
 {
@@ -19,8 +20,8 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<cm::controllers::MasterController>("CM", 1, 0, "MasterController");
-    qmlRegisterType<cm::controllers::NavigationController>("CM", 1, 0, "NavigationController");
-    qmlRegisterType<cm::controllers::CommandController>("CM", 1, 0, "CommandController");
+    qmlRegisterUncreatableType<cm::controllers::INavigationController>("CM", 1, 0, "INavigationController", "Interafce");
+    qmlRegisterUncreatableType<cm::controllers::ICommandController>("CM", 1, 0, "ICommandController", "Interface");
     qmlRegisterType<cm::framework::Command>("CM", 1, 0, "Command");
     qmlRegisterType<cm::data::StringDecorator>("CM", 1, 0, "StringDecorator");
     qmlRegisterType<cm::data::IntDecorator>("CM", 1, 0, "IntDecorator");
@@ -31,7 +32,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<cm::models::Client>("CM", 1, 0, "Client");
     qmlRegisterType<cm::models::ClientSearch>("CM", 1, 0, "ClientSearch");
     qmlRegisterType<cm::models::Contact>("CM", 1, 0, "Contact");
-    cm::controllers::MasterController masterController;
+    cm::framework::ObjectFactory objectFactory;
+    cm::controllers::MasterController masterController(nullptr, &objectFactory);
 
     QQmlApplicationEngine engine;
     engine.addImportPath("qrc:/");

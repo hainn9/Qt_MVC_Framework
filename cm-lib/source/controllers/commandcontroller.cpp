@@ -11,7 +11,7 @@ namespace controllers {
 class CommandController::CommandControllerPrivate
 {
 public:
-    CommandControllerPrivate(CommandController* pCommandController, IDatabaseController* _databaseController, NavigationController* _navigationController, Client* _newClient, ClientSearch* _clientSearch)
+    CommandControllerPrivate(CommandController* pCommandController, IDatabaseController* _databaseController, INavigationController* _navigationController, Client* _newClient, ClientSearch* _clientSearch)
         :commandController(pCommandController),
           databaseController(_databaseController),
           navigationController(_navigationController),
@@ -40,16 +40,16 @@ public:
     QList<Command*> findClientViewContextCommands{};
     QList<Command*> editClientViewContextCommands{};
     IDatabaseController* databaseController{nullptr};
-    NavigationController* navigationController{nullptr};
+    INavigationController* navigationController{nullptr};
     Client* newClient{nullptr};
     ClientSearch* clientSearch{nullptr};
     Client* selectedClient{nullptr};
 };
 
-CommandController::CommandController(QObject *parent, IDatabaseController *idatabaseController, NavigationController* navigationController, models::Client *newClient, ClientSearch *clientSearch)
-    : QObject(parent)
+CommandController::CommandController(QObject *parent, IDatabaseController *idatabaseController, INavigationController* inavigationController, models::Client *newClient, ClientSearch *clientSearch)
+    : ICommandController(parent)
 {
-    commandController_priv.reset(new CommandControllerPrivate(this, idatabaseController, navigationController, newClient, clientSearch));
+    commandController_priv.reset(new CommandControllerPrivate(this, idatabaseController, inavigationController, newClient, clientSearch));
 }
 
 CommandController::~CommandController()
@@ -84,9 +84,9 @@ void CommandController::onCreateClientSaveExecuted()
                                                           commandController_priv->newClient->id(),
                                                           commandController_priv->newClient->toJson());
     qDebug() << "New Client Saved";
-    commandController_priv->clientSearch->searchText()->setValue(commandController_priv->newClient->id());
-    commandController_priv->clientSearch->search();
-    commandController_priv->navigationController->goFindClientView();
+//    commandController_priv->clientSearch->searchText()->setValue(commandController_priv->newClient->id());
+//    commandController_priv->clientSearch->search();
+//    commandController_priv->navigationController->goFindClientView();
 }
 
 void CommandController::onFindClientSearchExecuted()

@@ -1,6 +1,7 @@
 #include "mastercontroller.h"
 
 using namespace cm::models;
+using namespace cm::framework;
 
 namespace cm {
 namespace controllers {
@@ -8,28 +9,30 @@ namespace controllers {
 class MasterController::MasterControllerPrivate
 {
 public:
-    MasterControllerPrivate(MasterController* pMasterController)
-        :masterController(pMasterController)
+    MasterControllerPrivate(MasterController* pMasterController, IObjectFactory* _objectFactory)
+        :masterController(pMasterController),
+          objectFactory(_objectFactory)
     {
-        databaseController = new DatabaseController(pMasterController);
-        navigationController = new NavigationController(pMasterController);
-        client = new Client(pMasterController);
-        clientSearch = new ClientSearch(pMasterController, databaseController);
-        commandController = new CommandController(pMasterController, databaseController, navigationController, client, clientSearch);
+        databaseController = objectFactory->createDatabaseController(pMasterController);
+        navigationController = objectFactory->createNavigationController(pMasterController);
+        client = objectFactory->createClient(pMasterController);
+        clientSearch = objectFactory->createClientSearch(pMasterController, databaseController);
+        commandController = objectFactory->createCommandController(pMasterController, databaseController, navigationController, client, clientSearch);
     }
 
     MasterController* masterController{nullptr};
-    NavigationController* navigationController{nullptr};
-    CommandController* commandController{nullptr};
-    DatabaseController* databaseController{nullptr};
+    INavigationController* navigationController{nullptr};
+    ICommandController* commandController{nullptr};
+    IDatabaseController* databaseController{nullptr};
     Client* client{nullptr};
     ClientSearch* clientSearch{nullptr};
+    IObjectFactory* objectFactory{nullptr};
     QString welcomeMessage = "This is MasterController";
 };
 
-MasterController::MasterController(QObject *parent) : QObject(parent)
+MasterController::MasterController(QObject *parent, framework::IObjectFactory *objectFactory) : QObject(parent)
 {
-    masterController_priv.reset(new MasterControllerPrivate(this));
+    masterController_priv.reset(new MasterControllerPrivate(this, objectFactory));
 }
 
 MasterController::~MasterController()
@@ -37,17 +40,17 @@ MasterController::~MasterController()
 
 }
 
-NavigationController* MasterController::navigationController()
+INavigationController* MasterController::navigationController()
 {
     return masterController_priv->navigationController;
 }
 
-CommandController* MasterController::commandController()
+ICommandController* MasterController::commandController()
 {
     return masterController_priv->commandController;
 }
 
-DatabaseController* MasterController::databaseController()
+IDatabaseController* MasterController::databaseController()
 {
     return masterController_priv->databaseController;
 }

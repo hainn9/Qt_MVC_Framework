@@ -1,19 +1,17 @@
 #ifndef NAVIGATIONCONTROLLER_H
 #define NAVIGATIONCONTROLLER_H
 
-#include <model/client.h>
-#include <cm-lib_global.h>
-#include <QObject>
+#include <controllers/inavigationcontroller.h>
 
 namespace cm {
 namespace controllers {
 
-class CMLIB_EXPORT NavigationController : public QObject
+class CMLIB_EXPORT NavigationController : public INavigationController
 {
     Q_OBJECT
 public:
     explicit NavigationController(QObject* pParent = nullptr)
-        :QObject(pParent)
+        :INavigationController(pParent)
     {}
 
 signals:

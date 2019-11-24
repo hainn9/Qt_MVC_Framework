@@ -62,13 +62,16 @@ SOURCES       = source/controllers/commandcontroller.cpp \
 		source/data/intdecorator.cpp \
 		source/data/stringdecorator.cpp \
 		source/framework/command.cpp \
+		source/framework/objectfactory.cpp \
 		source/model/address.cpp \
 		source/model/appointment.cpp \
 		source/model/client.cpp \
 		source/model/clientsearch.cpp \
 		source/model/contact.cpp build/linux/gcc/x64/debug/.moc/moc_commandcontroller.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_databasecontroller.cpp \
+		build/linux/gcc/x64/debug/.moc/moc_icommandcontroller.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp \
+		build/linux/gcc/x64/debug/.moc/moc_inavigationcontroller.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_navigationcontroller.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_datadecorator.cpp \
@@ -79,6 +82,8 @@ SOURCES       = source/controllers/commandcontroller.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_intdecorator.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_stringdecorator.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_command.cpp \
+		build/linux/gcc/x64/debug/.moc/moc_iobjectfactory.cpp \
+		build/linux/gcc/x64/debug/.moc/moc_objectfactory.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_address.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_appointment.cpp \
 		build/linux/gcc/x64/debug/.moc/moc_client.cpp \
@@ -94,6 +99,7 @@ OBJECTS       = build/linux/gcc/x64/debug/.obj/commandcontroller.o \
 		build/linux/gcc/x64/debug/.obj/intdecorator.o \
 		build/linux/gcc/x64/debug/.obj/stringdecorator.o \
 		build/linux/gcc/x64/debug/.obj/command.o \
+		build/linux/gcc/x64/debug/.obj/objectfactory.o \
 		build/linux/gcc/x64/debug/.obj/address.o \
 		build/linux/gcc/x64/debug/.obj/appointment.o \
 		build/linux/gcc/x64/debug/.obj/client.o \
@@ -101,7 +107,9 @@ OBJECTS       = build/linux/gcc/x64/debug/.obj/commandcontroller.o \
 		build/linux/gcc/x64/debug/.obj/contact.o \
 		build/linux/gcc/x64/debug/.obj/moc_commandcontroller.o \
 		build/linux/gcc/x64/debug/.obj/moc_databasecontroller.o \
+		build/linux/gcc/x64/debug/.obj/moc_icommandcontroller.o \
 		build/linux/gcc/x64/debug/.obj/moc_idatabasecontroller.o \
+		build/linux/gcc/x64/debug/.obj/moc_inavigationcontroller.o \
 		build/linux/gcc/x64/debug/.obj/moc_mastercontroller.o \
 		build/linux/gcc/x64/debug/.obj/moc_navigationcontroller.o \
 		build/linux/gcc/x64/debug/.obj/moc_datadecorator.o \
@@ -112,6 +120,8 @@ OBJECTS       = build/linux/gcc/x64/debug/.obj/commandcontroller.o \
 		build/linux/gcc/x64/debug/.obj/moc_intdecorator.o \
 		build/linux/gcc/x64/debug/.obj/moc_stringdecorator.o \
 		build/linux/gcc/x64/debug/.obj/moc_command.o \
+		build/linux/gcc/x64/debug/.obj/moc_iobjectfactory.o \
+		build/linux/gcc/x64/debug/.obj/moc_objectfactory.o \
 		build/linux/gcc/x64/debug/.obj/moc_address.o \
 		build/linux/gcc/x64/debug/.obj/moc_appointment.o \
 		build/linux/gcc/x64/debug/.obj/moc_client.o \
@@ -312,7 +322,9 @@ DIST          = ../../../Qt5.13.1/5.13.1/gcc_64/mkspecs/features/spec_pre.prf \
 		cm-lib.pro source/cm-lib_global.h \
 		source/controllers/commandcontroller.h \
 		source/controllers/databasecontroller.h \
+		source/controllers/icommandcontroller.h \
 		source/controllers/idatabasecontroller.h \
+		source/controllers/inavigationcontroller.h \
 		source/controllers/mastercontroller.h \
 		source/controllers/navigationcontroller.h \
 		source/data/datadecorator.h \
@@ -323,6 +335,8 @@ DIST          = ../../../Qt5.13.1/5.13.1/gcc_64/mkspecs/features/spec_pre.prf \
 		source/data/intdecorator.h \
 		source/data/stringdecorator.h \
 		source/framework/command.h \
+		source/framework/iobjectfactory.h \
+		source/framework/objectfactory.h \
 		source/model/address.h \
 		source/model/appointment.h \
 		source/model/client.h \
@@ -337,6 +351,7 @@ DIST          = ../../../Qt5.13.1/5.13.1/gcc_64/mkspecs/features/spec_pre.prf \
 		source/data/intdecorator.cpp \
 		source/data/stringdecorator.cpp \
 		source/framework/command.cpp \
+		source/framework/objectfactory.cpp \
 		source/model/address.cpp \
 		source/model/appointment.cpp \
 		source/model/client.cpp \
@@ -781,8 +796,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt5.13.1/5.13.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents source/cm-lib_global.h source/controllers/commandcontroller.h source/controllers/databasecontroller.h source/controllers/idatabasecontroller.h source/controllers/mastercontroller.h source/controllers/navigationcontroller.h source/data/datadecorator.h source/data/datetimedecorator.h source/data/entity.h source/data/entitycollection.h source/data/enumdecorator.h source/data/intdecorator.h source/data/stringdecorator.h source/framework/command.h source/model/address.h source/model/appointment.h source/model/client.h source/model/clientsearch.h source/model/contact.h $(DISTDIR)/
-	$(COPY_FILE) --parents source/controllers/commandcontroller.cpp source/controllers/databasecontroller.cpp source/controllers/mastercontroller.cpp source/data/datadecorator.cpp source/data/datetimedecorator.cpp source/data/entity.cpp source/data/enumdecorator.cpp source/data/intdecorator.cpp source/data/stringdecorator.cpp source/framework/command.cpp source/model/address.cpp source/model/appointment.cpp source/model/client.cpp source/model/clientsearch.cpp source/model/contact.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents source/cm-lib_global.h source/controllers/commandcontroller.h source/controllers/databasecontroller.h source/controllers/icommandcontroller.h source/controllers/idatabasecontroller.h source/controllers/inavigationcontroller.h source/controllers/mastercontroller.h source/controllers/navigationcontroller.h source/data/datadecorator.h source/data/datetimedecorator.h source/data/entity.h source/data/entitycollection.h source/data/enumdecorator.h source/data/intdecorator.h source/data/stringdecorator.h source/framework/command.h source/framework/iobjectfactory.h source/framework/objectfactory.h source/model/address.h source/model/appointment.h source/model/client.h source/model/clientsearch.h source/model/contact.h $(DISTDIR)/
+	$(COPY_FILE) --parents source/controllers/commandcontroller.cpp source/controllers/databasecontroller.cpp source/controllers/mastercontroller.cpp source/data/datadecorator.cpp source/data/datetimedecorator.cpp source/data/entity.cpp source/data/enumdecorator.cpp source/data/intdecorator.cpp source/data/stringdecorator.cpp source/framework/command.cpp source/framework/objectfactory.cpp source/model/address.cpp source/model/appointment.cpp source/model/client.cpp source/model/clientsearch.cpp source/model/contact.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -814,10 +829,11 @@ compiler_moc_predefs_clean:
 build/linux/gcc/x64/debug/.moc/moc_predefs.h: ../../../Qt5.13.1/5.13.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o build/linux/gcc/x64/debug/.moc/moc_predefs.h ../../../Qt5.13.1/5.13.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: build/linux/gcc/x64/debug/.moc/moc_commandcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_databasecontroller.cpp build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp build/linux/gcc/x64/debug/.moc/moc_navigationcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_datadecorator.cpp build/linux/gcc/x64/debug/.moc/moc_datetimedecorator.cpp build/linux/gcc/x64/debug/.moc/moc_entity.cpp build/linux/gcc/x64/debug/.moc/moc_entitycollection.cpp build/linux/gcc/x64/debug/.moc/moc_enumdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_intdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_stringdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_command.cpp build/linux/gcc/x64/debug/.moc/moc_address.cpp build/linux/gcc/x64/debug/.moc/moc_appointment.cpp build/linux/gcc/x64/debug/.moc/moc_client.cpp build/linux/gcc/x64/debug/.moc/moc_clientsearch.cpp build/linux/gcc/x64/debug/.moc/moc_contact.cpp
+compiler_moc_header_make_all: build/linux/gcc/x64/debug/.moc/moc_commandcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_databasecontroller.cpp build/linux/gcc/x64/debug/.moc/moc_icommandcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp build/linux/gcc/x64/debug/.moc/moc_inavigationcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp build/linux/gcc/x64/debug/.moc/moc_navigationcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_datadecorator.cpp build/linux/gcc/x64/debug/.moc/moc_datetimedecorator.cpp build/linux/gcc/x64/debug/.moc/moc_entity.cpp build/linux/gcc/x64/debug/.moc/moc_entitycollection.cpp build/linux/gcc/x64/debug/.moc/moc_enumdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_intdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_stringdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_command.cpp build/linux/gcc/x64/debug/.moc/moc_iobjectfactory.cpp build/linux/gcc/x64/debug/.moc/moc_objectfactory.cpp build/linux/gcc/x64/debug/.moc/moc_address.cpp build/linux/gcc/x64/debug/.moc/moc_appointment.cpp build/linux/gcc/x64/debug/.moc/moc_client.cpp build/linux/gcc/x64/debug/.moc/moc_clientsearch.cpp build/linux/gcc/x64/debug/.moc/moc_contact.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) build/linux/gcc/x64/debug/.moc/moc_commandcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_databasecontroller.cpp build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp build/linux/gcc/x64/debug/.moc/moc_navigationcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_datadecorator.cpp build/linux/gcc/x64/debug/.moc/moc_datetimedecorator.cpp build/linux/gcc/x64/debug/.moc/moc_entity.cpp build/linux/gcc/x64/debug/.moc/moc_entitycollection.cpp build/linux/gcc/x64/debug/.moc/moc_enumdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_intdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_stringdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_command.cpp build/linux/gcc/x64/debug/.moc/moc_address.cpp build/linux/gcc/x64/debug/.moc/moc_appointment.cpp build/linux/gcc/x64/debug/.moc/moc_client.cpp build/linux/gcc/x64/debug/.moc/moc_clientsearch.cpp build/linux/gcc/x64/debug/.moc/moc_contact.cpp
+	-$(DEL_FILE) build/linux/gcc/x64/debug/.moc/moc_commandcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_databasecontroller.cpp build/linux/gcc/x64/debug/.moc/moc_icommandcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp build/linux/gcc/x64/debug/.moc/moc_inavigationcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp build/linux/gcc/x64/debug/.moc/moc_navigationcontroller.cpp build/linux/gcc/x64/debug/.moc/moc_datadecorator.cpp build/linux/gcc/x64/debug/.moc/moc_datetimedecorator.cpp build/linux/gcc/x64/debug/.moc/moc_entity.cpp build/linux/gcc/x64/debug/.moc/moc_entitycollection.cpp build/linux/gcc/x64/debug/.moc/moc_enumdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_intdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_stringdecorator.cpp build/linux/gcc/x64/debug/.moc/moc_command.cpp build/linux/gcc/x64/debug/.moc/moc_iobjectfactory.cpp build/linux/gcc/x64/debug/.moc/moc_objectfactory.cpp build/linux/gcc/x64/debug/.moc/moc_address.cpp build/linux/gcc/x64/debug/.moc/moc_appointment.cpp build/linux/gcc/x64/debug/.moc/moc_client.cpp build/linux/gcc/x64/debug/.moc/moc_clientsearch.cpp build/linux/gcc/x64/debug/.moc/moc_contact.cpp
 build/linux/gcc/x64/debug/.moc/moc_commandcontroller.cpp: source/controllers/commandcontroller.h \
+		source/controllers/icommandcontroller.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QObject \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs.h \
@@ -899,7 +915,7 @@ build/linux/gcc/x64/debug/.moc/moc_commandcontroller.cpp: source/controllers/com
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonArray \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonarray.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QList \
-		source/controllers/navigationcontroller.h \
+		source/controllers/inavigationcontroller.h \
 		source/model/client.h \
 		source/data/entity.h \
 		source/data/datadecorator.h \
@@ -913,6 +929,7 @@ build/linux/gcc/x64/debug/.moc/moc_commandcontroller.cpp: source/controllers/com
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdatetime.h \
 		source/model/contact.h \
 		source/data/enumdecorator.h \
+		source/model/clientsearch.h \
 		build/linux/gcc/x64/debug/.moc/moc_predefs.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/bin/moc
 	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/moc $(DEFINES) --include /home/namhait1/QtProject/cm/cm-lib/build/linux/gcc/x64/debug/.moc/moc_predefs.h -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/mkspecs/linux-g++ -I/home/namhait1/QtProject/cm/cm-lib -I/home/namhait1/QtProject/cm/cm-lib/source -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtSql -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include source/controllers/commandcontroller.h -o build/linux/gcc/x64/debug/.moc/moc_commandcontroller.cpp
@@ -984,6 +1001,107 @@ build/linux/gcc/x64/debug/.moc/moc_databasecontroller.cpp: source/controllers/da
 		../../../Qt5.13.1/5.13.1/gcc_64/bin/moc
 	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/moc $(DEFINES) --include /home/namhait1/QtProject/cm/cm-lib/build/linux/gcc/x64/debug/.moc/moc_predefs.h -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/mkspecs/linux-g++ -I/home/namhait1/QtProject/cm/cm-lib -I/home/namhait1/QtProject/cm/cm-lib/source -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtSql -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include source/controllers/databasecontroller.h -o build/linux/gcc/x64/debug/.moc/moc_databasecontroller.cpp
 
+build/linux/gcc/x64/debug/.moc/moc_icommandcontroller.cpp: source/controllers/icommandcontroller.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringview.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvector.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/QQmlListProperty \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qqmllist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqmlglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqml-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhash.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qset.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		source/cm-lib_global.h \
+		source/framework/command.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QScopedPointer \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QString \
+		source/controllers/idatabasecontroller.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonArray \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonarray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QList \
+		source/controllers/inavigationcontroller.h \
+		source/model/client.h \
+		source/data/entity.h \
+		source/data/datadecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonValue \
+		source/data/entitycollection.h \
+		source/data/stringdecorator.h \
+		source/model/address.h \
+		source/model/appointment.h \
+		source/data/datetimedecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QDateTime \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdatetime.h \
+		source/model/contact.h \
+		source/data/enumdecorator.h \
+		source/model/clientsearch.h \
+		build/linux/gcc/x64/debug/.moc/moc_predefs.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/bin/moc
+	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/moc $(DEFINES) --include /home/namhait1/QtProject/cm/cm-lib/build/linux/gcc/x64/debug/.moc/moc_predefs.h -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/mkspecs/linux-g++ -I/home/namhait1/QtProject/cm/cm-lib -I/home/namhait1/QtProject/cm/cm-lib/source -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtSql -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include source/controllers/icommandcontroller.h -o build/linux/gcc/x64/debug/.moc/moc_icommandcontroller.cpp
+
 build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp: source/controllers/idatabasecontroller.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QObject \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject.h \
@@ -1049,6 +1167,103 @@ build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp: source/controllers/i
 		../../../Qt5.13.1/5.13.1/gcc_64/bin/moc
 	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/moc $(DEFINES) --include /home/namhait1/QtProject/cm/cm-lib/build/linux/gcc/x64/debug/.moc/moc_predefs.h -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/mkspecs/linux-g++ -I/home/namhait1/QtProject/cm/cm-lib -I/home/namhait1/QtProject/cm/cm-lib/source -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtSql -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include source/controllers/idatabasecontroller.h -o build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp
 
+build/linux/gcc/x64/debug/.moc/moc_inavigationcontroller.cpp: source/controllers/inavigationcontroller.h \
+		source/model/client.h \
+		source/cm-lib_global.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qversiontagging.h \
+		source/data/entity.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringview.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvector.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject_impl.h \
+		source/data/datadecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QScopedPointer \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonValue \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QString \
+		source/data/entitycollection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QList \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonArray \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonarray.h \
+		source/data/stringdecorator.h \
+		source/model/address.h \
+		source/model/appointment.h \
+		source/data/datetimedecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QDateTime \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhash.h \
+		source/model/contact.h \
+		source/data/enumdecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/QQmlListProperty \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qqmllist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqmlglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqml-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qset.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		build/linux/gcc/x64/debug/.moc/moc_predefs.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/bin/moc
+	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/moc $(DEFINES) --include /home/namhait1/QtProject/cm/cm-lib/build/linux/gcc/x64/debug/.moc/moc_predefs.h -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/mkspecs/linux-g++ -I/home/namhait1/QtProject/cm/cm-lib -I/home/namhait1/QtProject/cm/cm-lib/source -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtSql -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include source/controllers/inavigationcontroller.h -o build/linux/gcc/x64/debug/.moc/moc_inavigationcontroller.cpp
+
 build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp: source/controllers/mastercontroller.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QObject \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject.h \
@@ -1105,7 +1320,7 @@ build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp: source/controllers/mast
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QString \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QScopedPointer \
 		source/cm-lib_global.h \
-		source/controllers/navigationcontroller.h \
+		source/controllers/inavigationcontroller.h \
 		source/model/client.h \
 		source/data/entity.h \
 		source/data/datadecorator.h \
@@ -1143,15 +1358,17 @@ build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp: source/controllers/mast
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		source/controllers/commandcontroller.h \
+		source/controllers/icommandcontroller.h \
 		source/framework/command.h \
 		source/controllers/idatabasecontroller.h \
-		source/controllers/databasecontroller.h \
+		source/model/clientsearch.h \
+		source/framework/iobjectfactory.h \
 		build/linux/gcc/x64/debug/.moc/moc_predefs.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/bin/moc
 	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/moc $(DEFINES) --include /home/namhait1/QtProject/cm/cm-lib/build/linux/gcc/x64/debug/.moc/moc_predefs.h -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/mkspecs/linux-g++ -I/home/namhait1/QtProject/cm/cm-lib -I/home/namhait1/QtProject/cm/cm-lib/source -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtSql -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include source/controllers/mastercontroller.h -o build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp
 
 build/linux/gcc/x64/debug/.moc/moc_navigationcontroller.cpp: source/controllers/navigationcontroller.h \
+		source/controllers/inavigationcontroller.h \
 		source/model/client.h \
 		source/cm-lib_global.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobal.h \
@@ -1769,6 +1986,211 @@ build/linux/gcc/x64/debug/.moc/moc_command.cpp: source/framework/command.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/bin/moc
 	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/moc $(DEFINES) --include /home/namhait1/QtProject/cm/cm-lib/build/linux/gcc/x64/debug/.moc/moc_predefs.h -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/mkspecs/linux-g++ -I/home/namhait1/QtProject/cm/cm-lib -I/home/namhait1/QtProject/cm/cm-lib/source -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtSql -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include source/framework/command.h -o build/linux/gcc/x64/debug/.moc/moc_command.cpp
 
+build/linux/gcc/x64/debug/.moc/moc_iobjectfactory.cpp: source/framework/iobjectfactory.h \
+		source/cm-lib_global.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringview.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvector.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject_impl.h \
+		source/controllers/icommandcontroller.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/QQmlListProperty \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qqmllist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqmlglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqml-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhash.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qset.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		source/framework/command.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QScopedPointer \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QString \
+		source/controllers/idatabasecontroller.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonArray \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonarray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QList \
+		source/controllers/inavigationcontroller.h \
+		source/model/client.h \
+		source/data/entity.h \
+		source/data/datadecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonValue \
+		source/data/entitycollection.h \
+		source/data/stringdecorator.h \
+		source/model/address.h \
+		source/model/appointment.h \
+		source/data/datetimedecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QDateTime \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdatetime.h \
+		source/model/contact.h \
+		source/data/enumdecorator.h \
+		source/model/clientsearch.h \
+		build/linux/gcc/x64/debug/.moc/moc_predefs.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/bin/moc
+	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/moc $(DEFINES) --include /home/namhait1/QtProject/cm/cm-lib/build/linux/gcc/x64/debug/.moc/moc_predefs.h -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/mkspecs/linux-g++ -I/home/namhait1/QtProject/cm/cm-lib -I/home/namhait1/QtProject/cm/cm-lib/source -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtSql -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include source/framework/iobjectfactory.h -o build/linux/gcc/x64/debug/.moc/moc_iobjectfactory.cpp
+
+build/linux/gcc/x64/debug/.moc/moc_objectfactory.cpp: source/framework/objectfactory.h \
+		source/framework/iobjectfactory.h \
+		source/cm-lib_global.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringview.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvector.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject_impl.h \
+		source/controllers/icommandcontroller.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/QQmlListProperty \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qqmllist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqmlglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqml-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhash.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qset.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		source/framework/command.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QScopedPointer \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QString \
+		source/controllers/idatabasecontroller.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonArray \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonarray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QList \
+		source/controllers/inavigationcontroller.h \
+		source/model/client.h \
+		source/data/entity.h \
+		source/data/datadecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonValue \
+		source/data/entitycollection.h \
+		source/data/stringdecorator.h \
+		source/model/address.h \
+		source/model/appointment.h \
+		source/data/datetimedecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QDateTime \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdatetime.h \
+		source/model/contact.h \
+		source/data/enumdecorator.h \
+		source/model/clientsearch.h \
+		build/linux/gcc/x64/debug/.moc/moc_predefs.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/bin/moc
+	/home/namhait1/Qt5.13.1/5.13.1/gcc_64/bin/moc $(DEFINES) --include /home/namhait1/QtProject/cm/cm-lib/build/linux/gcc/x64/debug/.moc/moc_predefs.h -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/mkspecs/linux-g++ -I/home/namhait1/QtProject/cm/cm-lib -I/home/namhait1/QtProject/cm/cm-lib/source -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtSql -I/home/namhait1/Qt5.13.1/5.13.1/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include source/framework/objectfactory.h -o build/linux/gcc/x64/debug/.moc/moc_objectfactory.cpp
+
 build/linux/gcc/x64/debug/.moc/moc_address.cpp: source/model/address.h \
 		source/cm-lib_global.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobal.h \
@@ -2197,6 +2619,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 ####### Compile
 
 build/linux/gcc/x64/debug/.obj/commandcontroller.o: source/controllers/commandcontroller.cpp source/controllers/commandcontroller.h \
+		source/controllers/icommandcontroller.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QObject \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs.h \
@@ -2278,7 +2701,7 @@ build/linux/gcc/x64/debug/.obj/commandcontroller.o: source/controllers/commandco
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonArray \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonarray.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QList \
-		source/controllers/navigationcontroller.h \
+		source/controllers/inavigationcontroller.h \
 		source/model/client.h \
 		source/data/entity.h \
 		source/data/datadecorator.h \
@@ -2292,6 +2715,7 @@ build/linux/gcc/x64/debug/.obj/commandcontroller.o: source/controllers/commandco
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdatetime.h \
 		source/model/contact.h \
 		source/data/enumdecorator.h \
+		source/model/clientsearch.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/commandcontroller.o source/controllers/commandcontroller.cpp
 
@@ -2438,7 +2862,7 @@ build/linux/gcc/x64/debug/.obj/mastercontroller.o: source/controllers/mastercont
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QString \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QScopedPointer \
 		source/cm-lib_global.h \
-		source/controllers/navigationcontroller.h \
+		source/controllers/inavigationcontroller.h \
 		source/model/client.h \
 		source/data/entity.h \
 		source/data/datadecorator.h \
@@ -2476,10 +2900,11 @@ build/linux/gcc/x64/debug/.obj/mastercontroller.o: source/controllers/mastercont
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		source/controllers/commandcontroller.h \
+		source/controllers/icommandcontroller.h \
 		source/framework/command.h \
 		source/controllers/idatabasecontroller.h \
-		source/controllers/databasecontroller.h
+		source/model/clientsearch.h \
+		source/framework/iobjectfactory.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/mastercontroller.o source/controllers/mastercontroller.cpp
 
 build/linux/gcc/x64/debug/.obj/datadecorator.o: source/data/datadecorator.cpp source/data/datadecorator.h \
@@ -2978,6 +3403,110 @@ build/linux/gcc/x64/debug/.obj/command.o: source/framework/command.cpp source/fr
 		source/cm-lib_global.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/command.o source/framework/command.cpp
 
+build/linux/gcc/x64/debug/.obj/objectfactory.o: source/framework/objectfactory.cpp source/framework/objectfactory.h \
+		source/framework/iobjectfactory.h \
+		source/cm-lib_global.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringview.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvector.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qobject_impl.h \
+		source/controllers/icommandcontroller.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/QQmlListProperty \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qqmllist.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqmlglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtQml/qtqml-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qhash.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qset.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		source/framework/command.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QScopedPointer \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QString \
+		source/controllers/idatabasecontroller.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonArray \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qjsonarray.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QList \
+		source/controllers/inavigationcontroller.h \
+		source/model/client.h \
+		source/data/entity.h \
+		source/data/datadecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QJsonValue \
+		source/data/entitycollection.h \
+		source/data/stringdecorator.h \
+		source/model/address.h \
+		source/model/appointment.h \
+		source/data/datetimedecorator.h \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/QDateTime \
+		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qdatetime.h \
+		source/model/contact.h \
+		source/data/enumdecorator.h \
+		source/model/clientsearch.h \
+		source/controllers/databasecontroller.h \
+		source/controllers/navigationcontroller.h \
+		source/controllers/commandcontroller.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/objectfactory.o source/framework/objectfactory.cpp
+
 build/linux/gcc/x64/debug/.obj/address.o: source/model/address.cpp source/model/address.h \
 		source/cm-lib_global.h \
 		../../../Qt5.13.1/5.13.1/gcc_64/include/QtCore/qglobal.h \
@@ -3388,8 +3917,14 @@ build/linux/gcc/x64/debug/.obj/moc_commandcontroller.o: build/linux/gcc/x64/debu
 build/linux/gcc/x64/debug/.obj/moc_databasecontroller.o: build/linux/gcc/x64/debug/.moc/moc_databasecontroller.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/moc_databasecontroller.o build/linux/gcc/x64/debug/.moc/moc_databasecontroller.cpp
 
+build/linux/gcc/x64/debug/.obj/moc_icommandcontroller.o: build/linux/gcc/x64/debug/.moc/moc_icommandcontroller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/moc_icommandcontroller.o build/linux/gcc/x64/debug/.moc/moc_icommandcontroller.cpp
+
 build/linux/gcc/x64/debug/.obj/moc_idatabasecontroller.o: build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/moc_idatabasecontroller.o build/linux/gcc/x64/debug/.moc/moc_idatabasecontroller.cpp
+
+build/linux/gcc/x64/debug/.obj/moc_inavigationcontroller.o: build/linux/gcc/x64/debug/.moc/moc_inavigationcontroller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/moc_inavigationcontroller.o build/linux/gcc/x64/debug/.moc/moc_inavigationcontroller.cpp
 
 build/linux/gcc/x64/debug/.obj/moc_mastercontroller.o: build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/moc_mastercontroller.o build/linux/gcc/x64/debug/.moc/moc_mastercontroller.cpp
@@ -3420,6 +3955,12 @@ build/linux/gcc/x64/debug/.obj/moc_stringdecorator.o: build/linux/gcc/x64/debug/
 
 build/linux/gcc/x64/debug/.obj/moc_command.o: build/linux/gcc/x64/debug/.moc/moc_command.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/moc_command.o build/linux/gcc/x64/debug/.moc/moc_command.cpp
+
+build/linux/gcc/x64/debug/.obj/moc_iobjectfactory.o: build/linux/gcc/x64/debug/.moc/moc_iobjectfactory.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/moc_iobjectfactory.o build/linux/gcc/x64/debug/.moc/moc_iobjectfactory.cpp
+
+build/linux/gcc/x64/debug/.obj/moc_objectfactory.o: build/linux/gcc/x64/debug/.moc/moc_objectfactory.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/moc_objectfactory.o build/linux/gcc/x64/debug/.moc/moc_objectfactory.cpp
 
 build/linux/gcc/x64/debug/.obj/moc_address.o: build/linux/gcc/x64/debug/.moc/moc_address.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/linux/gcc/x64/debug/.obj/moc_address.o build/linux/gcc/x64/debug/.moc/moc_address.cpp
